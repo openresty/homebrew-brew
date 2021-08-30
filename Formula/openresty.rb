@@ -104,6 +104,12 @@ class Openresty < Formula
     EOS
   end
 
+  def caveats
+    <<~EOS
+      You can find the configuration files for openresty under #{etc}/openresty/.
+    EOS
+  end
+
   test do
     system "#{bin}/openresty", "-V"
   end
