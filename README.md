@@ -38,6 +38,10 @@ brew unlink nginx
 brew link openresty
 ```
 
+## Where is the configuration file for openresty?
+
+You can find the configuration files for openresty under `$HOMEBREW_PREFIX/etc/openresty/` (The default value of `$HOMEBREW_PREFIX` is `/usr/local` and you can check the value of `$HOMEBREW_PREFIX` with `brew --config` command).
+
 ## Documentation
 `brew help`, `man brew` or check [Homebrew's documentation](https://github.com/Homebrew/brew/blob/master/docs/README.md).
 
