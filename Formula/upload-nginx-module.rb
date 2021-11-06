@@ -5,8 +5,6 @@ class UploadNginxModule < Formula
   version "2.255.1"
   sha256 "5f1c3c2b9858b9cacd877a0f2df9b9263734e9cef8d837b73f0e659c0f7fde2d"
 
-  bottle :unneeded
-
   def install
     pkgshare.install Dir["*"]
   end

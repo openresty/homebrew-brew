@@ -5,8 +5,6 @@ class LuaNginxModule < Formula
   sha256 "b4acb84e2d631035a516d61830c910ef6e6485aba86096221ec745e0dbb3fbc9"
   head "https://github.com/openresty/lua-nginx-module.git"
 
-  bottle :unneeded
-
   depends_on "luajit"
   depends_on "ngx-devel-kit"
 

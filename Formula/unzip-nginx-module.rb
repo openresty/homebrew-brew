@@ -5,7 +5,6 @@ class UnzipNginxModule < Formula
   version "0.1"
   sha256 "49a0bd04ac632842e24c5bbb2fdd9ebe3aa6a753efd5b7e71eb273e5973a5cee"
 
-  bottle :unneeded
   revision 1
 
   def install

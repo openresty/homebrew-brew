@@ -6,8 +6,6 @@ class NaxsiNginxModule < Formula
   version_scheme 1
   head "https://github.com/nbs-system/naxsi.git"
 
-  bottle :unneeded
-
   def install
     cd "naxsi_src" do
       pkgshare.install Dir["*"]
