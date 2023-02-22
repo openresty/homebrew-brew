@@ -77,7 +77,7 @@ class Openresty < Formula
     system "make", "install"
   end
 
-  plist_options :manual => "openresty"
+  service.require_root :manual => "openresty"
 
   def plist
     <<~EOS
