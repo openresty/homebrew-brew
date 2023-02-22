@@ -77,7 +77,10 @@ class Openresty < Formula
     system "make", "install"
   end
 
-  service.require_root :manual => "openresty"
+  service do
+    run "#{opt_bin}/openresty"
+    require_root true
+  end
 
   def plist
     <<~EOS
