@@ -3,10 +3,10 @@ require 'etc'
 class OpenrestyDebug < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
   homepage "https://openresty.org"
-  VERSION = "1.21.4.1".freeze
+  VERSION = "1.21.4.2".freeze
   revision 1
   url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
-  sha256 "0c5093b64f7821e85065c99e5d4e6cc31820cfd7f37b9a0dec84209d87a2af99"
+  sha256 "5b1eded25c1d4ed76c0336dfae50bd94d187af9c85ead244135dd5ae363b2e2a"
 
   option "with-postgresql", "Compile with ngx_http_postgres_module"
   option "with-iconv", "Compile with ngx_http_iconv_module"
@@ -77,30 +77,11 @@ class OpenrestyDebug < Formula
     system "make", "install"
   end
 
-  plist_options :manual => "openresty"
-
-  def plist; <<~EOS
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-      <dict>
-        <key>Label</key>
-        <string>#{plist_name}</string>
-        <key>RunAtLoad</key>
-        <true/>
-        <key>KeepAlive</key>
-        <false/>
-        <key>ProgramArguments</key>
-        <array>
-            <string>#{opt_prefix}/bin/openresty</string>
-            <string>-g</string>
-            <string>daemon off;</string>
-        </array>
-        <key>WorkingDirectory</key>
-        <string>#{HOMEBREW_PREFIX}</string>
-      </dict>
-    </plist>
-    EOS
+  service do
+    run [opt_prefix/"bin/openresty", "-g", "daemon off;"]
+    working_dir HOMEBREW_PREFIX
+    keep_alive true
+    require_root true
   end
 
   def caveats
