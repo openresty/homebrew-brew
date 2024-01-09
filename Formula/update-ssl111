@@ -10,8 +10,9 @@ sub get_sha256sum ($$);
 
 my $version = shift or die "No version number specified.\n";
 
-for my $formula_file (reverse sort glob 'openresty*.rb') {
-    if ($formula_file =~ /^openresty(?:-(?:valgrind|asan|debug))?\.rb$/) {
+for my $formula_file (reverse sort glob 'openresty-openssl111*.rb') {
+    if ($formula_file =~ /^openresty-openssl111(?:-(?:valgrind|asan|debug))?\.rb$/)
+    {
         update_formula $formula_file;
     }
 }
@@ -27,7 +28,7 @@ sub update_formula ($) {
 
     my $changes = 0;
 
-    if ($src =~ s/^(\s+) VERSION (\s* = \s*) "( \d+ (?: \.\d+ ){3} )" \.freeze$/${1}VERSION = "$version".freeze/xsm) {
+    if ($src =~ s/^(\s+) VERSION (\s* = \s*) "( \d+ \.\d+ \.\d+\w+ )" \.freeze$/${1}VERSION = "$version".freeze/xsm) {
         my $old_ver = $3;
         $formula_var->{VERSION} = $version;
 
