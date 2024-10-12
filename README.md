@@ -79,6 +79,6 @@ Run the following command to update the openresty and test the building.
 cd Formula
 ./update-or 1.27.1.1
 #change the openssl3 dependency if needed.
-sed -i '' 's#openresty/brew/openresty-openssl3#./openresty-openssl3.rb#g' openresty.rb
+sed -i '' "s#openresty/brew/openresty-openssl3#$PWD/openresty-openssl3.rb#g" openresty.rb
 brew install --build-from-source ./openresty.rb
 ```
