@@ -58,3 +58,27 @@ Please see the [contributing guide](https://github.com/openresty/homebrew-brew/b
 * `git push --set-upstream origin my-new-formula` to get it into your GitHub fork as a new branch.
 * If you have to change something, add a commit and `git push`.
 * On GitHub, select your new branch and then click the "Pull Request" button.
+
+# Development
+
+## update openssl3
+
+Run the following command to update the openssl3 and test the building.
+
+```shell
+cd Formula
+./update-ssl3 3.0.15
+brew install --build-from-source ./openresty-openssl3.rb
+```
+
+## update openresty
+
+Run the following command to update the openresty and test the building.
+
+```shell
+cd Formula
+./update-or 1.27.1.1
+#change the openssl3 dependency if needed.
+sed -i '' 's#openresty/brew/openresty-openssl3#./openresty-openssl3.rb#g' openresty.rb
+brew install --build-from-source ./openresty.rb
+```
