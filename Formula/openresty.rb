@@ -12,7 +12,7 @@ class Openresty < Formula
   option "with-iconv", "Compile with ngx_http_iconv_module"
   option "with-slice", "Compile with ngx_http_slice_module"
 
-  depends_on "geoip"
+  depends_on "libmaxminddb"
   depends_on "openresty/brew/openresty-openssl3"
   depends_on "pcre"
   depends_on "postgresql" => :optional
