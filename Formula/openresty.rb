@@ -14,7 +14,7 @@ class Openresty < Formula
 
   depends_on "libmaxminddb"
   depends_on "openresty/brew/openresty-openssl3"
-  depends_on "pcre"
+  depends_on "pcre2"
   depends_on "postgresql" => :optional
 
   skip_clean "site"
@@ -24,8 +24,8 @@ class Openresty < Formula
 
   def install
     # Configure
-    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{Formula["pcre"].opt_include} -I#{Formula["openresty/brew/openresty-openssl3"].opt_include}"
-    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{Formula["pcre"].opt_lib} -L#{Formula["openresty/brew/openresty-openssl3"].opt_lib}"
+    cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{Formula["pcre2"].opt_include} -I#{Formula["openresty/brew/openresty-openssl3"].opt_include}"
+    ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{Formula["pcre2"].opt_lib} -L#{Formula["openresty/brew/openresty-openssl3"].opt_lib}"
 
     args = %W[
       -j#{Etc.nprocessors}
