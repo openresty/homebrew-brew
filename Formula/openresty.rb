@@ -71,6 +71,7 @@ class Openresty < Formula
       --with-http_mp4_module
       --with-http_gunzip_module
       --with-threads
+      --with-compat
       --with-luajit-xcflags=-DLUAJIT_NUMMODE=2\ -DLUAJIT_ENABLE_LUA52COMPAT\ -fno-stack-check
     ]
 
