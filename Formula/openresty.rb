@@ -37,6 +37,7 @@ class Openresty < Formula
 
     args = %W[
       -j#{Etc.nprocessors}
+      --with-compat
       --prefix=#{prefix}
       --pid-path=#{var}/run/openresty.pid
       --lock-path=#{var}/run/openresty.lock
