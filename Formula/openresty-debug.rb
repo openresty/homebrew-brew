@@ -6,7 +6,7 @@ class OpenrestyDebug < Formula
   VERSION = "1.27.1.1".freeze
   revision 1
   url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
-  sha256 "2d564022b06e33b45f7e5cfaf1e5dc571d38d61803af9fa2754dfff353c28d9c"
+  sha256 "79b071e27bdc143d5f401d0dbf504de4420070d867538c5edc2546d0351fd5c0"
 
   option "with-postgresql", "Compile with ngx_http_postgres_module"
   option "with-iconv", "Compile with ngx_http_iconv_module"
