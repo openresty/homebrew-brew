@@ -1,16 +1,16 @@
 class OpenrestyOpenssl3 < Formula
   desc "This OpenSSL 3 library build is specifically for OpenResty uses"
   homepage "https://www.openssl.org/"
-  VERSION = "3.0.15".freeze
+  VERSION = "3.4.1".freeze
   revision 1
 
   stable do
     url "https://github.com/openssl/openssl/releases/download/openssl-#{VERSION}/openssl-#{VERSION}.tar.gz"
-    sha256 "23c666d0edf20f14249b3d8f0368acaee9ab585b09e1de82107c66e1f3ec9533"
+    sha256 "002a2d6b30b58bf4bea46c43bdd96365aaf8daa6c428782aa4feee06da197df3"
 
     patch do
-      url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-3.0.15-sess_set_get_cb_yield.patch"
-      sha256 "4c9925018f49c70ebd2f197a4cb15d9517416ad08366bac9849afb0d2b8ec922"
+      url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-3.4.1-sess_set_get_cb_yield.patch"
+      sha256 "fa2e0fbb4dcc880c0b7f28c4511a356b01ff85b9fa35c74b8fe3274d76782ac4"
     end
   end
 

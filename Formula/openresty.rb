@@ -3,17 +3,17 @@ require 'etc'
 class Openresty < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
   homepage "https://openresty.org"
-  VERSION = "1.27.1.1".freeze
-  revision 2
+  VERSION = "1.27.1.2".freeze
+  revision 1
 
   stable do
     url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
-    sha256 "79b071e27bdc143d5f401d0dbf504de4420070d867538c5edc2546d0351fd5c0"
+    sha256 "74f076f7e364b2a99a6c5f9bb531c27610c78985abe956b442b192a2295f7548"
 
-    patch do
-      url "https://raw.githubusercontent.com/openresty/openresty/refs/heads/master/patches/LuaJIT2-20241104.patch"
-      sha256 "5e1f56e32f481cd42c73612af7b6e4a06ee5a6f1f711553a76fb505ca2dfebeb"
-    end
+    #patch do
+    #  url "https://raw.githubusercontent.com/openresty/openresty/refs/heads/master/patches/LuaJIT2-20241104.patch"
+    #  sha256 "5e1f56e32f481cd42c73612af7b6e4a06ee5a6f1f711553a76fb505ca2dfebeb"
+    #end
   end
 
   option "with-postgresql", "Compile with ngx_http_postgres_module"
