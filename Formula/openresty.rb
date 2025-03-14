@@ -10,10 +10,10 @@ class Openresty < Formula
     url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
     sha256 "74f076f7e364b2a99a6c5f9bb531c27610c78985abe956b442b192a2295f7548"
 
-    patch do
-      url "https://raw.githubusercontent.com/openresty/openresty/refs/heads/master/patches/LuaJIT2-20241104.patch"
-      sha256 "5e1f56e32f481cd42c73612af7b6e4a06ee5a6f1f711553a76fb505ca2dfebeb"
-    end
+    #patch do
+    #  url "https://raw.githubusercontent.com/openresty/openresty/refs/heads/master/patches/LuaJIT2-20241104.patch"
+    #  sha256 "5e1f56e32f481cd42c73612af7b6e4a06ee5a6f1f711553a76fb505ca2dfebeb"
+    #end
   end
 
   option "with-postgresql", "Compile with ngx_http_postgres_module"
