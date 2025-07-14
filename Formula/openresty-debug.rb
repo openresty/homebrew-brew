@@ -3,7 +3,7 @@ require 'etc'
 class OpenrestyDebug < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
   homepage "https://openresty.org"
-  VERSION = "1.27.1.2".freeze
+  VERSION = "1.27.1.3".freeze
   revision 1
   url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
   sha256 "74f076f7e364b2a99a6c5f9bb531c27610c78985abe956b442b192a2295f7548"
@@ -15,7 +15,6 @@ class OpenrestyDebug < Formula
   depends_on "pcre"
   depends_on "postgresql" => :optional
   depends_on "openresty/brew/openresty-openssl3"
-  depends_on "geoip"
 
   skip_clean "site"
   skip_clean "pod"
@@ -55,7 +54,6 @@ class OpenrestyDebug < Formula
       --with-http_auth_request_module
       --with-http_secure_link_module
       --with-http_random_index_module
-      --with-http_geoip_module
       --with-http_gzip_static_module
       --with-http_sub_module
       --with-http_dav_module

@@ -3,7 +3,7 @@ require 'etc'
 class Openresty < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
   homepage "https://openresty.org"
-  VERSION = "1.27.1.2".freeze
+  VERSION = "1.27.1.3".freeze
   revision 1
 
   stable do
@@ -63,7 +63,6 @@ class Openresty < Formula
       --with-http_auth_request_module
       --with-http_secure_link_module
       --with-http_random_index_module
-      --with-http_geoip_module
       --with-http_gzip_static_module
       --with-http_sub_module
       --with-http_dav_module
