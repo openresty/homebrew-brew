@@ -1,15 +1,15 @@
 class OpenrestyOpenssl3 < Formula
   desc "This OpenSSL 3 library build is specifically for OpenResty uses"
   homepage "https://www.openssl.org/"
-  VERSION = "3.5.1".freeze
+  VERSION = "3.5.4".freeze
   revision 1
 
   stable do
     url "https://github.com/openssl/openssl/releases/download/openssl-#{VERSION}/openssl-#{VERSION}.tar.gz"
-    sha256 "529043b15cffa5f36077a4d0af83f3de399807181d607441d734196d889b641f"
+    sha256 "967311f84955316969bdb1d8d4b983718ef42338639c621ec4c34fddef355e99"
 
     patch do
-      url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-3.5.0-sess_set_get_cb_yield.patch"
+      url "https://raw.githubusercontent.com/openresty/openresty/master/patches/openssl-3.5.4-sess_set_get_cb_yield.patch"
       sha256 "fa2e0fbb4dcc880c0b7f28c4511a356b01ff85b9fa35c74b8fe3274d76782ac4"
     end
   end
@@ -59,6 +59,6 @@ class OpenrestyOpenssl3 < Formula
   end
 
   def openssldir
-    etc/"openssl@(3.5.1)"
+    etc/"openssl@(3.5.4)"
   end
 end
