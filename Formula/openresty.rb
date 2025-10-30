@@ -1,4 +1,4 @@
-require 'etc'
+require "etc"
 
 class Openresty < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
@@ -10,17 +10,18 @@ class Openresty < Formula
     url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
     sha256 "74f076f7e364b2a99a6c5f9bb531c27610c78985abe956b442b192a2295f7548"
 
-    #patch do
+    # patch do
     #  url "https://raw.githubusercontent.com/openresty/openresty/refs/heads/master/patches/LuaJIT2-20241104.patch"
     #  sha256 "5e1f56e32f481cd42c73612af7b6e4a06ee5a6f1f711553a76fb505ca2dfebeb"
-    #end
+    # end
   end
 
   option "with-postgresql", "Compile with ngx_http_postgres_module"
   option "with-iconv", "Compile with ngx_http_iconv_module"
   option "with-slice", "Compile with ngx_http_slice_module"
+  option "without-geoip", "Compile without ngx_http_geoip module"
 
-  depends_on "libmaxminddb"
+  depends_on "libmaxminddb" unless build.without? "geoip"
   depends_on "openresty/brew/openresty-openssl3"
   depends_on "pcre2"
   depends_on "postgresql" => :optional
@@ -63,7 +64,6 @@ class Openresty < Formula
       --with-http_auth_request_module
       --with-http_secure_link_module
       --with-http_random_index_module
-      --with-http_geoip_module
       --with-http_gzip_static_module
       --with-http_sub_module
       --with-http_dav_module
@@ -75,6 +75,7 @@ class Openresty < Formula
       --with-luajit-xcflags=-DLUAJIT_NUMMODE=2\ -DLUAJIT_ENABLE_LUA52COMPAT\ -fno-stack-check
     ]
 
+    args << "--with-http_geoip_module" unless build.without? "geoip"
     args << "--with-http_postgres_module" if build.with? "postgresql"
     args << "--with-http_iconv_module" if build.with? "iconv"
     args << "--with-http_slice_module" if build.with? "slice"
