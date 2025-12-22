@@ -19,9 +19,10 @@ class Openresty < Formula
   option "with-postgresql", "Compile with ngx_http_postgres_module"
   option "with-iconv", "Compile with ngx_http_iconv_module"
   option "with-slice", "Compile with ngx_http_slice_module"
-  option "without-geoip", "Compile without ngx_http_geoip module"
+  option "with-geoip2", "Compile with ngx_http_geoip2_module"
 
-  depends_on "libmaxminddb" unless build.without? "geoip"
+  depends_on "openresty/brew/geoip2-nginx-module" if build.with? "geoip2"
+  depends_on "libmaxminddb" if build.with? "geoip2"
   depends_on "openresty/brew/openresty-openssl3"
   depends_on "pcre2"
   depends_on "postgresql" => :optional
@@ -35,6 +36,11 @@ class Openresty < Formula
     # Configure
     cc_opt = "-I#{HOMEBREW_PREFIX}/include -I#{Formula["pcre2"].opt_include} -I#{Formula["openresty/brew/openresty-openssl3"].opt_include}"
     ld_opt = "-L#{HOMEBREW_PREFIX}/lib -L#{Formula["pcre2"].opt_lib} -L#{Formula["openresty/brew/openresty-openssl3"].opt_lib}"
+    
+    if build.with? "geoip2"
+      cc_opt += " -I#{Formula["libmaxminddb"].opt_include}"
+      ld_opt += " -L#{Formula["libmaxminddb"].opt_lib}"
+    end
 
     args = %W[
       -j#{Etc.nprocessors}
@@ -75,7 +81,7 @@ class Openresty < Formula
       --with-luajit-xcflags=-DLUAJIT_NUMMODE=2\ -DLUAJIT_ENABLE_LUA52COMPAT\ -fno-stack-check
     ]
 
-    args << "--with-http_geoip_module" unless build.without? "geoip"
+    args << "--add-module=#{Formula["openresty/brew/geoip2-nginx-module"].opt_share}/geoip2-nginx-module" if build.with? "geoip2"
     args << "--with-http_postgres_module" if build.with? "postgresql"
     args << "--with-http_iconv_module" if build.with? "iconv"
     args << "--with-http_slice_module" if build.with? "slice"
