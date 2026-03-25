@@ -28,7 +28,7 @@ sub update_formula ($) {
 
     my $changes = 0;
 
-    if ($src =~ s/^(\s+) VERSION (\s* = \s*) "( \d+ \.\d+ \.\d+\w+ )" \.freeze$/${1}VERSION = "$version".freeze/xsm) {
+    if ($src =~ s/^(\s+) VERSION (\s* = \s*) "( \d+ \.\d+ \.\d+ )" \.freeze$/${1}VERSION = "$version".freeze/xsm) {
         my $old_ver = $3;
         $formula_var->{VERSION} = $version;
 

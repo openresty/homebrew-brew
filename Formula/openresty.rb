@@ -3,12 +3,12 @@ require "etc"
 class Openresty < Formula
   desc "Scalable Web Platform by Extending NGINX with Lua"
   homepage "https://openresty.org"
-  VERSION = "1.29.2.1".freeze
+  VERSION = "1.29.2.3".freeze
   revision 1
 
   stable do
     url "https://openresty.org/download/openresty-#{VERSION}.tar.gz"
-    sha256 "52b2d096743dbc812f654b295087ef28fc24b2d40c1ba30aeae51cac21caf2b9"
+    sha256 "315e49fa4568747fec4bdada9614d2ba287e7aed4b3430d7ea25685e24cc43ff"
 
     # patch do
     #  url "https://raw.githubusercontent.com/openresty/openresty/refs/heads/master/patches/LuaJIT2-20241104.patch"
